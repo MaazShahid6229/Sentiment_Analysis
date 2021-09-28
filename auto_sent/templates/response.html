@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{search}}</title>
+    <style>
+        table {
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 20px;
+            height: 100%;
+            table-layout: fixed;
+        }
+
+        td {
+            border: 1px solid black;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+<table border="1px">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Asin</th>
+        <th>Tittle</th>
+        <th>Review Data</th>
+    </tr>
+    </thead>
+    <tbod>
+        {% for i in get_json %}
+        <tr>
+            <td>{{i.Id}}</td>
+            <td>{{i.asin}}</td>
+            <td>{{i.title}}</td>
+            <td>
+                <table border="1px">
+                    <thead>
+                    <tr>
+                        <th>Rating</th>
+                        <th>Review</th>
+                        <th>Sentence</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for j in i.review_data %}
+                    <tr>
+                        <td>{{j.Rating}}</td>
+                        <td>{{j.Review}}</td>
+                        <td>
+                            <table border="1px">
+                                <thead>
+                                <tr>
+                                    <th>Text</th>
+                                    <th>Status</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for k in j.sent_text %}
+                                <tr>
+                                    <td>{{k.text}}</td>
+                                    <td>{{k.status}}</td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbod>
+</table>
+
+</body>
+</html>
