@@ -38,8 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'API',
-    'rest_framework',
     'corsheaders',
+    'rest_framework',
+    'knox',
 ]
 
 MIDDLEWARE = [
@@ -82,11 +83,11 @@ WSGI_APPLICATION = 'auto_sent.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Auto_Sent_2',
+        'NAME': 'auto_sent',
         'USER': 'postgres',
-        'PASSWORD': 'maaz@123',
-        'HOST': 'localhost'
-
+        'PASSWORD': 'Chm@@z6229',
+        'HOST': 'localhost',
+        'PORT': '5432'
     }
 }
 
@@ -137,3 +138,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        # 'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+        'knox.auth.TokenAuthentication',
+    ]
+}

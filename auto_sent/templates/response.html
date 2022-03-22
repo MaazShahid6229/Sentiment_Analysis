@@ -41,7 +41,7 @@
                     <tr>
                         <th>Rating</th>
                         <th>Review</th>
-                        <th>Sentence</th>
+                        <th>Status</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -49,24 +49,7 @@
                     <tr>
                         <td>{{j.Rating}}</td>
                         <td>{{j.Review}}</td>
-                        <td>
-                            <table border="1px">
-                                <thead>
-                                <tr>
-                                    <th>Text</th>
-                                    <th>Status</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {% for k in j.sent_text %}
-                                <tr>
-                                    <td>{{k.text}}</td>
-                                    <td>{{k.status}}</td>
-                                </tr>
-                                {% endfor %}
-                                </tbody>
-                            </table>
-                        </td>
+                        <td>{{j.status}}</td>
                     </tr>
                     {% endfor %}
                     </tbody>

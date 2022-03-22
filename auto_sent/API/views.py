@@ -4,7 +4,6 @@ import requests
 import json
 import stanza
 import csv
-
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
@@ -54,6 +53,7 @@ def reviews(request):
         i = 1
 
         for d in data2:
+            print("==>",d)
             try:
                 prod = ProductModel.objects.get(asin=d['asin'])
                 status = analysis(d['reviewText'])
@@ -79,7 +79,7 @@ def get(request):
     x = ProductModel.objects.filter(title__contains=search)
     z = 0
     for i in x:
-        if i:
+        if i and z < 50:
             z = z + 1
             get_high_image = []
             get_low_image = []
@@ -92,7 +92,7 @@ def get(request):
                 get_low_image.append(image.image_low)
             get_data = []
             for review in all_reviews:
-                get_data.append({'Rating': review.rating, 'Review': review.reviewText, 'status': review.status})
+                get_data.append({'Rating': review.rating, 'Review': review.reviewText, 'status': review.status, "reviewTime": review.reviewTime})
             get_json.append({
                 'Id': z,
                 'asin': i.asin,
