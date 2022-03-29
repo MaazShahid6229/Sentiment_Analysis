@@ -3,8 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="fa7b4fe3-e713-420a-8d7f-d1d2aa015aec" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auto_sent/API/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/auto_sent/API/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auto_sent/API/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/auto_sent/API/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auto_sent/API/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/auto_sent/API/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auto_sent/auto_sent/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/auto_sent/auto_sent/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auto_sent/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/auto_sent/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,8 +43,8 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="last_opened_file_path" value="$USER_HOME$/OneDrive/Desktop/New folder (2)" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -141,7 +144,17 @@
       <workItem from="1644226109651" duration="5261000" />
       <workItem from="1646666209175" duration="115000" />
       <workItem from="1647872861129" duration="5113000" />
-      <workItem from="1647944100910" duration="10961000" />
+      <workItem from="1647944100910" duration="15406000" />
+      <workItem from="1647968509416" duration="1254000" />
+      <workItem from="1648025156348" duration="3569000" />
+      <workItem from="1648049190307" duration="233000" />
+      <workItem from="1648063721360" duration="717000" />
+      <workItem from="1648122157809" duration="1496000" />
+      <workItem from="1648125811048" duration="4429000" />
+      <workItem from="1648467242514" duration="2907000" />
+      <workItem from="1648476880609" duration="974000" />
+      <workItem from="1648538540873" duration="1280000" />
+      <workItem from="1648546521521" duration="6689000" />
     </task>
     <servers />
   </component>
@@ -158,6 +171,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/sentiment$views.coverage" NAME="views Coverage Results" MODIFIED="1628941654210" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/auto_sent/API" />

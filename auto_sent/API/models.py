@@ -31,9 +31,7 @@ class ReviewData(models.Model):
     status = models.CharField(max_length=100, default="", null=True)
     summary = models.CharField(max_length=1000, default="", null=True)
     reviewTime = models.CharField(max_length=50, default="", null=True)
-    rating = models.DecimalField(max_digits=
-
-                                 3, decimal_places=2, default=0.0)
+    rating = models.DecimalField(max_digits=3, decimal_places=2, default=0.0)
     prods = models.ForeignKey(ProductModel, on_delete=models.CASCADE, default="", null=True)
 
     def __str__(self):

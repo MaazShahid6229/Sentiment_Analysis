@@ -4,6 +4,7 @@ import requests
 import json
 import stanza
 import csv
+from bs4 import BeautifulSoup
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
@@ -11,6 +12,12 @@ from . models import ReviewData, Category, Reviewer, Images, ProductModel
 
 # stanza.download()
 nlp = stanza.Pipeline(lang='en', processors='tokenize,sentiment')
+
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:94.0) Gecko/20100101 Firefox/94.0',
+    'Accept-Language': 'en-US, en;q=0.5'
+}
+
 
 
 def index(request):
@@ -122,3 +129,53 @@ def analysis(review_text):
         return "Positive"
     else:
         return "Not Found"
+
+
+
+@csrf_exempt
+def get_reviews(request):
+    search = request.POST["search"]
+    search_query = search.replace(' ', '+')
+    base_url = 'https://www.amazon.ae/s?k={0}'.format(search_query)
+
+    items = []
+    for i in range(1, 2):
+        print('Processing {0}...'.format(base_url + '&page={0}'.format(i)))
+        response = requests.get(base_url + '&page={0}'.format(i), headers=headers)
+        soup = BeautifulSoup(response.content, 'html.parser')
+
+        results = soup.find_all('div', {'class': 's-result-item', 'data-component-type': 's-search-result'})
+
+        for result in results[:10]:
+            product_name = result.h2.text
+
+            try:
+                rating = result.find('i', {'class': 'a-icon'}).text
+                rating_count = result.find_all('span', {'aria-label': True})[1].text
+            except AttributeError:
+                continue
+
+            try:
+                price1 = result.find('span', {'class': 'a-price-whole'}).text
+                price2 = result.find('span', {'class': 'a-price-fraction'}).text
+                price = price1 + price2
+                product_url = 'https://amazon.ae' + result.h2.a['href']
+                response1 = requests.get(product_url, headers=headers)
+                soup1 = BeautifulSoup(response1.content, 'html.parser')
+                image = soup1.select("#landingImage")
+                image_url =""
+                if image:
+                    image_url = image[0]["src"]
+                results1 = soup1.find_all("div", attrs={"class": "a-row a-spacing-none"})
+                review_data = []
+                for result1 in results1:
+                    name = result1.select(".a-profile-name")
+                    time1 = result1.find_all("span", attrs={"class": "a-size-base a-color-secondary review-date"})
+                    review_d = result1.find_all("div", attrs={"class": "a-expander-content reviewText review-text-content a-expander-partial-collapse-content"})
+                    if name and time1 and review_d:
+                        status = analysis(review_d[0].text)
+                        review_data.append({"reviwer": name[0].text, "Time": time1[0].text, "review": review_d[0].text, "status": status})
+                items.append({"product_url": product_url, "product_name": product_name, "image_url": image_url, "rating": rating, "rating_count": rating_count, "price": price, "review_data": review_data})
+            except AttributeError:
+                continue
+    return JsonResponse({'get_json': items})

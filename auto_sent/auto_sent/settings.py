@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-^s%t96j8bh%-0l%p_+1b2g=*$5$doy_&ojuq5rquk3i1h7de@2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS=['*']
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 # Application definition
@@ -87,10 +88,20 @@ DATABASES = {
         'NAME': 'auto_sent',
         'USER': 'postgres',
         'PASSWORD': 'Chm@@z6229',
-        'HOST': 'localhost',
+        'HOST': '127.0.0.1',
         'PORT': '5432'
     }
 }
+
+# PROJECT_DIR = os.path.abspath(os.path.dirname(__file__))
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(PROJECT_DIR, 'auto_sent.db'),
+#     }
+# }
+
+
 
 
 # Password validation
